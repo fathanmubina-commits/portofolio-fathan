@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Pribadi - Muhammad Fathan Mubia</title>
+    <!-- Font Google: Poppins untuk tampilan modern -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome untuk Icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- CSS VARIABLES (Tema Warna & Font) --- */
+        :root {
+            --primary-color: #0d9488;
+            /* Hijau Tosca KPI/Dakwah */
+            --primary-dark: #0f766e;
+            --secondary-color: #f0fdfa;
+            /* Background muda */
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --white: #ffffff;
+            --accent: #f59e0b;
+            /* Oranye untuk highlight */
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --radius: 12px;
+        }
+
+        /* --- RESET DASAR --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: #f9fafb;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 50px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        #hero {
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            text-align: center;
+        }
+
+        .hero-content img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary-color);
+            margin-bottom: 20px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* --- BIODATA SECTION --- */
+        #biodata {
+            background-color: var(--white);
+        }
+
+        .bio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .bio-card {
+            background: var(--secondary-color);
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #e5e7eb;
+        }
+
+        .bio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .bio-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .bio-card h3 {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+
+        .bio-card p {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        /* --- SKILLS SECTION --- */
+        #skills {
+            background-color: #f9fafb;
+        }
+
+        .skill-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .skill-item {
+            margin-bottom: 25px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e5e7eb;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        /* --- SECTION BARU: PENGALAMAN ORGANISASI --- */
+        #experience {
+            background-color: var(--white);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            padding: 20px;
+            background: var(--white);
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 24px;
+            width: 16px;
+            height: 16px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .year {
+            font-size: 0.9rem;
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        /* --- PORTFOLIO SECTION (MODIFIKASI LAYOUT) --- */
+        #portfolio {
+            background-color: #f3f4f6;
+        }
+
+        /* Modifikasi: Grid 2 kolom di desktop (bukan 3) */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .portfolio-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .portfolio-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .portfolio-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            text-align: center;
+            padding: 8px 20px;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* --- CONTACT SECTION --- */
+        #contact {
+            background-color: var(--white);
+        }
+
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                /* Sederhana: sembunyikan menu di HP untuk tahap awal */
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                /* Kembalikan ke 1 kolom di HP */
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigasi -->
+    <nav>
+        <div class="container nav-container">
+            <a href="#" class="logo">Muhammad Fathan Mubina</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#biodata">Biodata</a></li>
+                <li><a href="#skills">Skill</a></li>
+
+                <li><a href="#contact">Kontak</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 1. Hero / About Me -->
+    <header id="hero">
+        <div class="container hero-content">
+            <!-- Foto Placeholder Random -->
+            <img src="FOTO PROFIL.jpeg" Foto Profil">
+            <h1>Halo, Saya Muhammad Fathan Mubina</h1>
+            <p>Pelajar SMK INFORMATIKA FITRAH INSANI Jurusan PPLG.</p>
+            <a href="#contact" class="btn">Hubungi Saya</a>
+        </div>
+    </header>
+
+    <!-- 2. Biodata Singkat -->
+    <section id="biodata">
+        <div class="container">
+            <h2 class="section-title">Biodata Diri</h2>
+            <p class="section-subtitle">Mengenal saya lebih dekat</p>
+
+            <div class="bio-grid">
+                <div class="bio-card">
+                    <i class="fas fa-user"></i>
+                    <h3>Nama Lengkap</h3>
+                    <p>Muhammad Fathan Mubina</p>
+                </div>
+                <div class="bio-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Asal</h3>
+                    <p>RIAU (PEKANBARU)</p>
+                </div>
+                <div class="bio-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>fathanmubina962@email.com
+
+                    </p>
+                </div>
+                <div class="bio-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Jurusan</h3>
+                    <p>PEMOGRAMAN PERANGKAT LUNAK DAN GAME</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Skill -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Keahlian</h2>
+            <p class="section-subtitle">Kemampuan teknis yang saya kuasai</p>
+
+            <div class="skill-container">
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Video Editing (CAPCUT)</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Public Speaking</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>Desain Grafis (Canva)</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-info">
+                        <span>HTML & CSS Dasar</span>
+                        <span>60%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio section removed -->
+
+    <!-- 6. Kontak -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Hubungi Saya</h2>
+            <p class="section-subtitle">Mari berkolaborasi atau sekadar menyapa</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>WhatsApp</h4>
+                            <p>+62 851 9804 5846</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-instagram"></i>
+                        <div>
+                            <h4>Instagram</h4>
+                            <p>@fathanmubina_</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <div>
+                            <h4>LinkedIn</h4>
+                            <p>Fathan Mubina</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form
+                        onsubmit="event.preventDefault(); alert('Terima kasih! Pesan Anda (simulasi) telah terkirim.');">
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" placeholder="Nama Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="Email Anda" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Fathan Mubina. Dibuat dengan HTML & CSS.</p>
+    </footer>
+
+</body>
+
+</html>
